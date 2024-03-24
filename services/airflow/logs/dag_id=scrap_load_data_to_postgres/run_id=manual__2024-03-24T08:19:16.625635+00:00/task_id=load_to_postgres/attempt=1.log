@@ -1,0 +1,13 @@
+[2024-03-24T08:19:22.606+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: scrap_load_data_to_postgres.load_to_postgres manual__2024-03-24T08:19:16.625635+00:00 [queued]>
+[2024-03-24T08:19:22.609+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: scrap_load_data_to_postgres.load_to_postgres manual__2024-03-24T08:19:16.625635+00:00 [queued]>
+[2024-03-24T08:19:22.609+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 1
+[2024-03-24T08:19:22.625+0000] {taskinstance.py:2217} INFO - Executing <Task(PythonOperator): load_to_postgres> on 2024-03-24 08:19:16.625635+00:00
+[2024-03-24T08:19:22.638+0000] {standard_task_runner.py:60} INFO - Started process 1946 to run task
+[2024-03-24T08:19:22.659+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'scrap_load_data_to_postgres', 'load_to_postgres', 'manual__2024-03-24T08:19:16.625635+00:00', '--job-id', '21', '--raw', '--subdir', 'DAGS_FOLDER/scrap_elt_.py', '--cfg-path', '/tmp/tmpfqpxs1xg']
+[2024-03-24T08:19:22.661+0000] {standard_task_runner.py:88} INFO - Job 21: Subtask load_to_postgres
+[2024-03-24T08:19:22.697+0000] {task_command.py:423} INFO - Running <TaskInstance: scrap_load_data_to_postgres.load_to_postgres manual__2024-03-24T08:19:16.625635+00:00 [running]> on host c112f9517df7
+[2024-03-24T08:19:22.825+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='scrap_load_data_to_postgres' AIRFLOW_CTX_TASK_ID='load_to_postgres' AIRFLOW_CTX_EXECUTION_DATE='2024-03-24T08:19:16.625635+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-03-24T08:19:16.625635+00:00'
+[2024-03-24T08:19:22.878+0000] {python.py:202} INFO - Done. Returned value was: None
+[2024-03-24T08:19:22.886+0000] {taskinstance.py:1149} INFO - Marking task as SUCCESS. dag_id=scrap_load_data_to_postgres, task_id=load_to_postgres, execution_date=20240324T081916, start_date=20240324T081922, end_date=20240324T081922
+[2024-03-24T08:19:22.918+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-03-24T08:19:22.938+0000] {taskinstance.py:3312} INFO - 0 downstream tasks scheduled from follow-on schedule check

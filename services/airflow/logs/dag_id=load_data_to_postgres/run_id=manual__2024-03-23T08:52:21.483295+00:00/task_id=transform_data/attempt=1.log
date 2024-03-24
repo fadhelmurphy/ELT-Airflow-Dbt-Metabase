@@ -1,0 +1,98 @@
+[2024-03-23 08:52:27,709] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: load_data_to_postgres.transform_data manual__2024-03-23T08:52:21.483295+00:00 [queued]>
+[2024-03-23 08:52:27,717] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: load_data_to_postgres.transform_data manual__2024-03-23T08:52:21.483295+00:00 [queued]>
+[2024-03-23 08:52:27,718] {taskinstance.py:1376} INFO - 
+--------------------------------------------------------------------------------
+[2024-03-23 08:52:27,718] {taskinstance.py:1377} INFO - Starting attempt 1 of 1
+[2024-03-23 08:52:27,718] {taskinstance.py:1378} INFO - 
+--------------------------------------------------------------------------------
+[2024-03-23 08:52:27,728] {taskinstance.py:1397} INFO - Executing <Task(PythonOperator): transform_data> on 2024-03-23 08:52:21.483295+00:00
+[2024-03-23 08:52:27,736] {standard_task_runner.py:52} INFO - Started process 533 to run task
+[2024-03-23 08:52:27,763] {standard_task_runner.py:79} INFO - Running: ['airflow', 'tasks', 'run', 'load_data_to_postgres', 'transform_data', 'manual__2024-03-23T08:52:21.483295+00:00', '--job-id', '3', '--raw', '--subdir', 'DAGS_FOLDER/api_etl_dbt.py', '--cfg-path', '/tmp/tmp7oe_hq8p', '--error-file', '/tmp/tmpc9sltnxc']
+[2024-03-23 08:52:27,767] {standard_task_runner.py:80} INFO - Job 3: Subtask transform_data
+[2024-03-23 08:52:27,827] {task_command.py:371} INFO - Running <TaskInstance: load_data_to_postgres.transform_data manual__2024-03-23T08:52:21.483295+00:00 [running]> on host 810364161d6b
+[2024-03-23 08:52:27,892] {taskinstance.py:1591} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=airflow
+AIRFLOW_CTX_DAG_ID=load_data_to_postgres
+AIRFLOW_CTX_TASK_ID=transform_data
+AIRFLOW_CTX_EXECUTION_DATE=2024-03-23T08:52:21.483295+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2024-03-23T08:52:21.483295+00:00
+[2024-03-23 08:52:27,963] {python.py:173} INFO - Done. Returned value was: (        id                     name    position age      country_name
+0     7544              André Onana  Goalkeeper  27          Cameroon
+1     8035               Tom Heaton  Goalkeeper  37           England
+2    29518           Altay Bayındır  Goalkeeper  25            Turkey
+3   210730               Dermot Mee  Goalkeeper  21           England
+4     3326            Harry Maguire     Defence  31           England
+5     3360           Raphaël Varane     Defence  30            France
+6     3492  Victor Nilsson-Lindelöf     Defence  29            Sweden
+7     7467           Tyrell Malacia     Defence  24       Netherlands
+8     7898                Luke Shaw     Defence  28           England
+9     8014              Jonny Evans     Defence  36  Northern Ireland
+10    8158        Aaron Wan-Bissaka     Defence  26           England
+11   15905              Diogo Dalot     Defence  25          Portugal
+12   46451        Lisandro Martínez     Defence  26         Argentina
+13  244860           Willy Kambwala     Defence  19          DR Congo
+14  248978          Habeeb Ogunneye     Defence  18           England
+15    3231                 Casemiro    Midfield  32            Brazil
+16    3257          Bruno Fernandes    Midfield  29          Portugal
+17    3459        Christian Eriksen    Midfield  32           Denmark
+18    3705           Sofyan Amrabat    Midfield  27           Morocco
+19    7599              Mason Mount    Midfield  25           England
+20    7905          Scott McTominay    Midfield  27          Scotland
+21  190797            Kobbie Mainoo    Midfield  18           England
+22  220574             Omari Forson    Midfield  19           England
+23  248734             Toby Collyer    Midfield  20           England
+24    3331          Marcus Rashford     Offence  26           England
+25    3372          Anthony Martial     Offence  28            France
+26   97085                   Antony     Offence  24            Brazil
+27  133584              Amad Diallo     Offence  21       Ivory Coast
+28  152770           Rasmus Højlund     Offence  21           Denmark
+29  160846          Shola Shoretire     Offence  20           Nigeria
+30  181901       Alejandro Garnacho     Forward  19         Argentina,         country_name  players_cnt
+0            England           11
+1             France            2
+2           Portugal            2
+3          Argentina            2
+4             Brazil            2
+5            Denmark            2
+6           Cameroon            1
+7             Turkey            1
+8             Sweden            1
+9        Netherlands            1
+10  Northern Ireland            1
+11          DR Congo            1
+12           Morocco            1
+13          Scotland            1
+14       Ivory Coast            1
+15           Nigeria            1,      position  players_cnt
+0     Defence           11
+1    Midfield            9
+2     Offence            6
+3  Goalkeeper            4
+4     Forward            1)
+[2024-03-23 08:52:27,975] {xcom.py:586} ERROR - Could not serialize the XCom value into JSON. If you are using pickle instead of JSON for XCom, then you need to enable pickle support for XCom in your airflow config.
+[2024-03-23 08:52:27,975] {taskinstance.py:1909} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 68, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 2412, in xcom_push
+    session=session,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 68, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/xcom.py", line 198, in set
+    map_index=map_index,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/xcom.py", line 583, in serialize_value
+    return json.dumps(value).encode('UTF-8')
+  File "/usr/local/lib/python3.7/json/__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type DataFrame is not JSON serializable
+[2024-03-23 08:52:27,979] {taskinstance.py:1420} INFO - Marking task as FAILED. dag_id=load_data_to_postgres, task_id=transform_data, execution_date=20240323T085221, start_date=20240323T085227, end_date=20240323T085227
+[2024-03-23 08:52:27,985] {standard_task_runner.py:97} ERROR - Failed to execute job 3 for task transform_data (Object of type DataFrame is not JSON serializable; 533)
+[2024-03-23 08:52:28,008] {local_task_job.py:156} INFO - Task exited with return code 1
+[2024-03-23 08:52:28,022] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

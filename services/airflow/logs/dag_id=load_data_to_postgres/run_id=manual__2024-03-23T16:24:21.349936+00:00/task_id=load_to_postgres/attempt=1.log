@@ -1,0 +1,161 @@
+[2024-03-23 16:24:30,859] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: load_data_to_postgres.load_to_postgres manual__2024-03-23T16:24:21.349936+00:00 [queued]>
+[2024-03-23 16:24:30,864] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: load_data_to_postgres.load_to_postgres manual__2024-03-23T16:24:21.349936+00:00 [queued]>
+[2024-03-23 16:24:30,865] {taskinstance.py:1376} INFO - 
+--------------------------------------------------------------------------------
+[2024-03-23 16:24:30,865] {taskinstance.py:1377} INFO - Starting attempt 1 of 1
+[2024-03-23 16:24:30,865] {taskinstance.py:1378} INFO - 
+--------------------------------------------------------------------------------
+[2024-03-23 16:24:30,954] {taskinstance.py:1397} INFO - Executing <Task(PythonOperator): load_to_postgres> on 2024-03-23 16:24:21.349936+00:00
+[2024-03-23 16:24:30,968] {standard_task_runner.py:52} INFO - Started process 858 to run task
+[2024-03-23 16:24:30,973] {standard_task_runner.py:79} INFO - Running: ['airflow', 'tasks', 'run', 'load_data_to_postgres', 'load_to_postgres', 'manual__2024-03-23T16:24:21.349936+00:00', '--job-id', '22', '--raw', '--subdir', 'DAGS_FOLDER/api_etl_dbt.py', '--cfg-path', '/tmp/tmp_i6ubcrk', '--error-file', '/tmp/tmpn8lp2fsy']
+[2024-03-23 16:24:30,973] {standard_task_runner.py:80} INFO - Job 22: Subtask load_to_postgres
+[2024-03-23 16:24:31,018] {task_command.py:371} INFO - Running <TaskInstance: load_data_to_postgres.load_to_postgres manual__2024-03-23T16:24:21.349936+00:00 [running]> on host eb25ddb3314a
+[2024-03-23 16:24:31,048] {taskinstance.py:1591} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=airflow
+AIRFLOW_CTX_DAG_ID=load_data_to_postgres
+AIRFLOW_CTX_TASK_ID=load_to_postgres
+AIRFLOW_CTX_EXECUTION_DATE=2024-03-23T16:24:21.349936+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2024-03-23T16:24:21.349936+00:00
+[2024-03-23 16:24:31,082] {logging_mixin.py:115} INFO -         id                     name    position  age      country_name
+0     7544              André Onana  Goalkeeper   27          Cameroon
+1     8035               Tom Heaton  Goalkeeper   37           England
+2    29518           Altay Bayındır  Goalkeeper   25            Turkey
+3   210730               Dermot Mee  Goalkeeper   21           England
+4     3326            Harry Maguire     Defence   31           England
+5     3360           Raphaël Varane     Defence   30            France
+6     3492  Victor Nilsson-Lindelöf     Defence   29            Sweden
+7     7467           Tyrell Malacia     Defence   24       Netherlands
+8     7898                Luke Shaw     Defence   28           England
+9     8014              Jonny Evans     Defence   36  Northern Ireland
+10    8158        Aaron Wan-Bissaka     Defence   26           England
+11   15905              Diogo Dalot     Defence   25          Portugal
+12   46451        Lisandro Martínez     Defence   26         Argentina
+13  244860           Willy Kambwala     Defence   19          DR Congo
+14  248978          Habeeb Ogunneye     Defence   18           England
+15    3231                 Casemiro    Midfield   32            Brazil
+16    3257          Bruno Fernandes    Midfield   29          Portugal
+17    3459        Christian Eriksen    Midfield   32           Denmark
+18    3705           Sofyan Amrabat    Midfield   27           Morocco
+19    7599              Mason Mount    Midfield   25           England
+20    7905          Scott McTominay    Midfield   27          Scotland
+21  190797            Kobbie Mainoo    Midfield   18           England
+22  220574             Omari Forson    Midfield   19           England
+23  248734             Toby Collyer    Midfield   20           England
+24    3331          Marcus Rashford     Offence   26           England
+25    3372          Anthony Martial     Offence   28            France
+26   97085                   Antony     Offence   24            Brazil
+27  133584              Amad Diallo     Offence   21       Ivory Coast
+28  152770           Rasmus Højlund     Offence   21           Denmark
+29  160846          Shola Shoretire     Offence   20           Nigeria
+30  181901       Alejandro Garnacho     Forward   19         Argentina ini adalah tbl_pemain_df
+[2024-03-23 16:24:31,208] {taskinstance.py:1909} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 3243, in _wrap_pool_connect
+    return fn()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 310, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 868, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 476, in checkout
+    rec = pool._do_get()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/pool/impl.py", line 146, in _do_get
+    self._dec_overflow()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 256, in _create_connection
+    return _ConnectionRecord(self)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 371, in __init__
+    self.__connect()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 666, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 661, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/create.py", line 590, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 584, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/home/airflow/.local/lib/python3.7/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: SCRAM authentication requires libpq version 10 or above
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 171, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 189, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/api_etl_dbt.py", line 82, in load_to_postgres
+    check_and_create_database(engine, database_name)
+  File "/opt/airflow/dags/api_etl_dbt.py", line 59, in check_and_create_database
+    engine.execute(f"CREATE DATABASE {database_name}")
+  File "<string>", line 2, in execute
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/deprecations.py", line 401, in warned
+    return fn(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 3138, in execute
+    connection = self.connect(close_with_result=True)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 3197, in connect
+    return self._connection_cls(self, close_with_result=close_with_result)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 96, in __init__
+    else engine.raw_connection()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 3276, in raw_connection
+    return self._wrap_pool_connect(self.pool.connect, _connection)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 3247, in _wrap_pool_connect
+    e, dialect, self
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 2101, in _handle_dbapi_exception_noconnection
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 3243, in _wrap_pool_connect
+    return fn()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 310, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 868, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 476, in checkout
+    rec = pool._do_get()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/pool/impl.py", line 146, in _do_get
+    self._dec_overflow()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 256, in _create_connection
+    return _ConnectionRecord(self)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 371, in __init__
+    self.__connect()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 666, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 661, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/create.py", line 590, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 584, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/home/airflow/.local/lib/python3.7/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) SCRAM authentication requires libpq version 10 or above
+
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+[2024-03-23 16:24:31,234] {taskinstance.py:1420} INFO - Marking task as FAILED. dag_id=load_data_to_postgres, task_id=load_to_postgres, execution_date=20240323T162421, start_date=20240323T162430, end_date=20240323T162431
+[2024-03-23 16:24:31,248] {standard_task_runner.py:97} ERROR - Failed to execute job 22 for task load_to_postgres ((psycopg2.OperationalError) SCRAM authentication requires libpq version 10 or above
+
+(Background on this error at: https://sqlalche.me/e/14/e3q8); 858)
+[2024-03-23 16:24:31,279] {local_task_job.py:156} INFO - Task exited with return code 1
+[2024-03-23 16:24:31,325] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check
