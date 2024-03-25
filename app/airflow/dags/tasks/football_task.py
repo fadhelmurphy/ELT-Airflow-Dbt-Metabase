@@ -1,6 +1,6 @@
 
 from dotenv import load_dotenv
-from ETL_Airflow_Dbt.app.airflow.dags.services import football_service
+from services import football_service
 from db.postgres import engine as psql_engine
 import os
 from helpers.operators import create_operator
