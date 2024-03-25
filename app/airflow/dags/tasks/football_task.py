@@ -1,6 +1,6 @@
 
 from dotenv import load_dotenv
-from services import football
+from ETL_Airflow_Dbt.app.airflow.dags.services import football_service
 from db.postgres import engine as psql_engine
 import os
 from helpers.operators import create_operator
@@ -60,7 +60,7 @@ end = create_operator(
 get_data_task = create_operator(
     task_type='python',
     task_id='extract_data_from_web',
-    python_callable=football.get_extract_transfermarkt,
+    python_callable=football_service.get_extract_transfermarkt,
     dag=dag,
 )
 
