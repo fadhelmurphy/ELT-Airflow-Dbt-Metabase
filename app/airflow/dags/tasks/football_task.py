@@ -57,7 +57,7 @@ end = create_operator(
     task_type='empty',task_id='end_ELT_cuy', dag=dag)
 
 # Task untuk mendapatkan data dari API
-get_data_task = create_operator(
+extract_data_task = create_operator(
     task_type='python',
     task_id='extract_data_from_web',
     python_callable=football_service.get_extract_transfermarkt,
@@ -75,7 +75,7 @@ load_to_postgres_task = create_operator(
 
 
   # run dbt run to do the data modelling.
-data_modelling = create_operator(
+data_modelling_task = create_operator(
     task_type='bash',
     task_id='dbt_data_modelling',
     bash_command= f"cd {DBT_PROJECT_PATH} && dbt run",
