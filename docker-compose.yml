@@ -50,17 +50,15 @@ x-airflow-common:
     _AIRFLOW_WWW_USER_USERNAME: ${AIRFLOW_USER_USERNAME}
     _AIRFLOW_WWW_USER_PASSWORD: ${AIRFLOW_USER_PASSWORD}
     ENGINE_CONNECT: ${ENGINE_CONNECT}
-    AIRFLOW_FOOTBALL_API_KEY: ${AIRFLOW_FOOTBALL_API_KEY}
-    # AIRFLOW__CORE__EXECUTOR: LocalExecutor
     
 
   volumes:
-    - ./services/airflow/dags:/opt/airflow/dags
-    - ./services/airflow/logs:/opt/airflow/logs
-    - ./services/airflow/config:/opt/airflow/config
-    - ./services/airflow/plugins:/opt/airflow/plugins
-    - ./services/airflow/scripts:/opt/airflow/scripts
-    - ./services/dbt:/opt/airflow/dbt
+    - ./app/airflow/dags:/opt/airflow/dags
+    - ./app/airflow/logs:/opt/airflow/logs
+    - ./app/airflow/config:/opt/airflow/config
+    - ./app/airflow/plugins:/opt/airflow/plugins
+    - ./app/airflow/scripts:/opt/airflow/scripts
+    - ./app/dbt:/opt/airflow/dbt
   depends_on:
     postgres:
       condition: service_healthy
@@ -74,6 +72,8 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     volumes:
       - ./data/postgres/initdb:/docker-entrypoint-initdb.d
+    expose:
+      - ${POSTGRES_PORT}
 
   pgadmin:
     image: dpage/pgadmin4:latest
@@ -81,7 +81,7 @@ services:
       - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}
       - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}
     ports:
-      - 8081:80
+      - ${PGADMIN_BROWSER_PORT}:80
     volumes:
       - pgadmin-volume:/var/lib/pgadmin
     depends_on:
@@ -91,18 +91,18 @@ services:
     image: metabase/metabase:latest
     restart: always
     environment:
-      MB_DB_TYPE: "postgres"
+      MB_DB_TYPE: postgres
       MB_DB_DBNAME: ${MB_DB_DBNAME}
-      MB_DB_PORT: 5432
+      MB_DB_PORT: ${POSTGRES_PORT}
       MB_DB_USER: ${POSTGRES_USER}
       MB_DB_PASS: ${POSTGRES_PASSWORD}
-      MB_DB_HOST: "postgres"
+      MB_DB_HOST: postgres # Berdasarkan nama service db postgresql,
       MB_EMAIL_FROM_ADDRESS: fadhelijlalfalah@gmail.com
       MB_EMAIL_FROM_NAME: fadhelijlalfalah@gmail.com
       # MB_PASSWORD_COMPLEXITY: strong
       # MB_PASSWORD_LENGTH: 10
     ports:
-      - 3000:3000
+      - ${MB_BROWSER_PORT}:3000
     depends_on:
       - postgres
 
@@ -118,7 +118,7 @@ services:
       _AIRFLOW_WWW_USER_USERNAME: ${AIRFLOW_USER_USERNAME:-airflow}
       _AIRFLOW_WWW_USER_PASSWORD: ${AIRFLOW_USER_USERNAME:-airflow}
     ports:
-      - 8080:8080
+      - ${AIRFLOW_BROWSER_PORT}:8080
     healthcheck:
       test: ["CMD", "curl", "--fail", "http://localhost:8080/health"]
       interval: 10s

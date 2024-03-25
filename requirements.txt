@@ -2,5 +2,5 @@ pandas
 sqlalchemy
 psycopg2-binary
 python-dotenv
-airflow-dbt
-dbt-postgres
+airflow-dbt # jika ingin menggunakan operator
+dbt-postgres # jika ingin menggunakan dbt run melalui bash operator

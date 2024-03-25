@@ -1,0 +1,51 @@
+version: 2
+
+models:
+  - name: data_pemain_berakhir
+    description: "A starter dbt model"
+    columns:
+      - name: nama
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+  - name: negara_with_market_value
+    description: "A starter dbt model"
+    columns:
+      - name: negara
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+  - name: posisi_with_market_value_terendah
+    description: "A starter dbt model"
+    columns:
+      - name: posisi
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+  - name: posisi_with_market_value_tertinggi
+    description: "A starter dbt model"
+    columns:
+      - name: posisi
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+  - name: lama_bermain
+    description: "A starter dbt model"
+    columns:
+      - name: nama
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+  - name: median_harga_pemain_umur
+    description: "A starter dbt model"
+    columns:
+      - name: umur
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
