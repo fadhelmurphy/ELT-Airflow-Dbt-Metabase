@@ -90,6 +90,8 @@ services:
   metabase:
     image: metabase/metabase:latest
     restart: always
+    volumes:
+      - ./data/metabase-data:/tmp/metabase-data
     environment:
       MB_DB_TYPE: postgres
       MB_DB_DBNAME: ${MB_DB_DBNAME}
@@ -99,6 +101,7 @@ services:
       MB_DB_HOST: postgres # Berdasarkan nama service db postgresql,
       MB_EMAIL_FROM_ADDRESS: fadhelijlalfalah@gmail.com
       MB_EMAIL_FROM_NAME: fadhelijlalfalah@gmail.com
+      MB_DB_FILE: /tmp/metabase-data/metabase.db
       # MB_PASSWORD_COMPLEXITY: strong
       # MB_PASSWORD_LENGTH: 10
     ports:
